@@ -20,30 +20,89 @@
       align-items: center;
       justify-content: center;
       padding: 20px;
+      overflow-x: hidden;
+    }
+
+    /* Animated background */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: radial-gradient(circle at 20% 50%, rgba(212, 165, 116, 0.1) 0%, transparent 50%),
+                  radial-gradient(circle at 80% 80%, rgba(107, 68, 35, 0.1) 0%, transparent 50%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .wrapper {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
 
     .logo-container {
-      margin-bottom: 30px;
-      animation: slideDown 0.6s ease-out;
+      margin-bottom: 40px;
+      animation: slideDown 0.8s ease-out;
+      position: relative;
     }
 
-    .logo-container img {
-      max-width: 280px;
+    .logo-container svg {
+      max-width: 320px;
+      width: 100%;
       height: auto;
-      display: block;
-      filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
+      filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.25));
+    }
+
+    .title-section {
+      text-align: center;
+      margin-bottom: 50px;
+      animation: fadeInUp 0.8s ease-out 0.2s both;
+    }
+
+    .title-section h1 {
+      color: #F5E6D3;
+      font-size: 2.5em;
+      margin-bottom: 10px;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+      letter-spacing: 2px;
+      font-weight: 700;
+    }
+
+    .title-section p {
+      color: #E8D5C4;
+      font-size: 1.1em;
+      font-style: italic;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
     }
 
     .chatbot-container {
       width: 100%;
-      max-width: 600px;
-      height: 700px;
-      background: white;
-      border-radius: 12px;
-      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+      max-width: 700px;
+      height: 750px;
+      background: linear-gradient(135deg, #FFFEF9 0%, #F5EFE7 100%);
+      border-radius: 20px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.5);
       border: 3px solid #D4A574;
       overflow: hidden;
-      animation: slideUp 0.6s ease-out;
+      animation: slideUp 0.8s ease-out 0.4s both;
+      position: relative;
+    }
+
+    .chatbot-container::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, #D4A574, transparent);
+      opacity: 0.5;
     }
 
     zapier-interfaces-chatbot-embed {
@@ -54,7 +113,7 @@
     @keyframes slideDown {
       from {
         opacity: 0;
-        transform: translateY(-30px);
+        transform: translateY(-50px);
       }
       to {
         opacity: 1;
@@ -63,6 +122,17 @@
     }
 
     @keyframes slideUp {
+      from {
+        opacity: 0;
+        transform: translateY(50px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeInUp {
       from {
         opacity: 0;
         transform: translateY(30px);
@@ -75,92 +145,146 @@
 
     /* Desktop View */
     @media (min-width: 769px) {
-      body {
-        padding: 40px 20px;
+      .logo-container svg {
+        max-width: 320px;
       }
 
-      .logo-container {
-        margin-bottom: 30px;
-      }
-
-      .logo-container img {
-        max-width: 280px;
+      .title-section h1 {
+        font-size: 2.5em;
       }
 
       .chatbot-container {
-        height: 700px;
+        height: 750px;
       }
     }
 
     /* Tablet View */
     @media (min-width: 481px) and (max-width: 768px) {
-      body {
-        padding: 30px 15px;
-      }
-
       .logo-container {
-        margin-bottom: 25px;
+        margin-bottom: 30px;
       }
 
-      .logo-container img {
-        max-width: 240px;
+      .logo-container svg {
+        max-width: 260px;
+      }
+
+      .title-section h1 {
+        font-size: 2em;
+      }
+
+      .title-section p {
+        font-size: 1em;
       }
 
       .chatbot-container {
         max-width: 95%;
-        height: 600px;
+        height: 650px;
       }
     }
 
     /* Mobile View */
     @media (max-width: 480px) {
       body {
-        padding: 20px 15px;
         justify-content: flex-start;
-        min-height: 100vh;
+        padding: 15px 10px;
       }
 
       .logo-container {
-        margin-bottom: 20px;
+        margin-bottom: 25px;
         margin-top: 10px;
       }
 
-      .logo-container img {
-        max-width: 180px;
+      .logo-container svg {
+        max-width: 200px;
+      }
+
+      .title-section {
+        margin-bottom: 30px;
+      }
+
+      .title-section h1 {
+        font-size: 1.6em;
+      }
+
+      .title-section p {
+        font-size: 0.9em;
       }
 
       .chatbot-container {
         width: 100%;
         max-width: 100%;
-        height: calc(100vh - 250px);
-        min-height: 500px;
-        border-radius: 8px;
+        height: calc(100vh - 280px);
+        min-height: 450px;
+        border-radius: 12px;
         border: 2px solid #D4A574;
       }
     }
 
     /* Extra small phones */
     @media (max-width: 360px) {
-      .logo-container img {
-        max-width: 150px;
+      .logo-container svg {
+        max-width: 160px;
+      }
+
+      .title-section h1 {
+        font-size: 1.3em;
       }
 
       .chatbot-container {
-        height: calc(100vh - 220px);
-        min-height: 400px;
+        height: calc(100vh - 250px);
+        min-height: 350px;
       }
     }
   </style>
 </head>
 <body>
-  <div class="logo-container">
-    <img src="logo.png" alt="TrueVedika Logo" />
-  </div>
+  <div class="wrapper">
+    <div class="logo-container">
+      <!-- TrueVedika Logo SVG -->
+      <svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+        <!-- Plant/Leaf design -->
+        <defs>
+          <linearGradient id="leafGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style="stop-color:#CD8500;stop-opacity:1" />
+            <stop offset="100%" style="stop-color:#8B5A00;stop-opacity:1" />
+          </linearGradient>
+        </defs>
+        
+        <!-- Center stem -->
+        <ellipse cx="200" cy="220" rx="8" ry="25" fill="url(#leafGradient)" />
+        
+        <!-- Left leaves -->
+        <ellipse cx="150" cy="150" rx="20" ry="45" fill="url(#leafGradient)" transform="rotate(-40 150 150)" opacity="0.9" />
+        <ellipse cx="130" cy="190" rx="18" ry="40" fill="url(#leafGradient)" transform="rotate(-25 130 190)" opacity="0.85" />
+        
+        <!-- Right leaves -->
+        <ellipse cx="250" cy="150" rx="20" ry="45" fill="url(#leafGradient)" transform="rotate(40 250 150)" opacity="0.9" />
+        <ellipse cx="270" cy="190" rx="18" ry="40" fill="url(#leafGradient)" transform="rotate(25 270 190)" opacity="0.85" />
+        
+        <!-- Top center leaf -->
+        <ellipse cx="200" cy="80" rx="16" ry="50" fill="url(#leafGradient)" opacity="1" />
+        
+        <!-- Top left leaf -->
+        <ellipse cx="165" cy="110" rx="15" ry="42" fill="url(#leafGradient)" transform="rotate(-30 165 110)" opacity="0.9" />
+        
+        <!-- Top right leaf -->
+        <ellipse cx="235" cy="110" rx="15" ry="42" fill="url(#leafGradient)" transform="rotate(30 235 110)" opacity="0.9" />
+        
+        <!-- Text -->
+        <text x="200" y="270" font-family="Georgia, serif" font-size="48" font-weight="bold" fill="#6B4423" text-anchor="middle" letter-spacing="2">TrueVedika</text>
+      </svg>
+    </div>
 
-  <div class="chatbot-container">
-    <!-- Zapier Chatbot Embed -->
-    <script async type='module' src='https://interfaces.zapier.com/assets/web-components/zapier-interfaces/zapier-interfaces.esm.js'></script>
-    <zapier-interfaces-chatbot-embed chatbot-id='cmkjan2pd001614i7sw8jiq1z'></zapier-interfaces-chatbot-embed>
+    <div class="title-section">
+      <h1>Welcome to TrueVedika</h1>
+      <p>Discover the wisdom of the Vedas</p>
+    </div>
+
+    <div class="chatbot-container">
+      <!-- Zapier Chatbot Embed -->
+      <script async type='module' src='https://interfaces.zapier.com/assets/web-components/zapier-interfaces/zapier-interfaces.esm.js'></script>
+      <zapier-interfaces-chatbot-embed chatbot-id='cmkjan2pd001614i7sw8jiq1z'></zapier-interfaces-chatbot-embed>
+    </div>
   </div>
 </body>
 </html>
