@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>TrueVedika Chatbot</title>
+  <title>TrueVedika - Back to Roots</title>
   <style>
     * {
       margin: 0;
@@ -17,10 +17,7 @@
       background-attachment: fixed;
       min-height: 100vh;
       display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 20px;
+      padding: 30px 20px;
       overflow-x: hidden;
       position: relative;
     }
@@ -35,8 +32,7 @@
       bottom: 0;
       background: 
         radial-gradient(circle at 20% 50%, rgba(212, 165, 116, 0.15) 0%, transparent 50%),
-        radial-gradient(circle at 80% 80%, rgba(139, 90, 60, 0.12) 0%, transparent 50%),
-        radial-gradient(circle at 50% 30%, rgba(160, 130, 109, 0.1) 0%, transparent 40%);
+        radial-gradient(circle at 80% 80%, rgba(139, 90, 60, 0.12) 0%, transparent 50%);
       pointer-events: none;
       z-index: 0;
       animation: gradientShift 15s ease-in-out infinite;
@@ -52,123 +48,137 @@
       z-index: 1;
       width: 100%;
       display: flex;
-      flex-direction: column;
-      align-items: center;
-      max-width: 800px;
+      gap: 40px;
+      max-width: 1400px;
+      margin: 0 auto;
+      align-items: flex-start;
     }
 
-    /* Decorative elements */
-    .decor-top {
-      position: absolute;
-      top: -50px;
-      left: 10%;
-      width: 150px;
-      height: 150px;
-      background: radial-gradient(circle, rgba(212, 165, 116, 0.2) 0%, transparent 70%);
-      border-radius: 50%;
-      animation: float 6s ease-in-out infinite;
+    .main-content {
+      flex: 1;
+      min-width: 0;
     }
 
-    .decor-bottom {
-      position: absolute;
-      bottom: -50px;
-      right: 5%;
-      width: 200px;
-      height: 200px;
-      background: radial-gradient(circle, rgba(107, 68, 35, 0.15) 0%, transparent 70%);
-      border-radius: 50%;
-      animation: float 8s ease-in-out infinite reverse;
-    }
-
-    @keyframes float {
-      0%, 100% { transform: translateY(0px); }
-      50% { transform: translateY(30px); }
+    /* Header Section */
+    .header-section {
+      margin-bottom: 40px;
+      animation: slideDown 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
     }
 
     .logo-container {
-      margin-bottom: 30px;
-      animation: slideDown 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
       background: rgba(255, 248, 240, 0.2);
-      padding: 25px;
+      padding: 20px;
       border-radius: 15px;
       backdrop-filter: blur(10px);
       border: 2px solid rgba(212, 165, 116, 0.3);
+      width: fit-content;
+      margin-bottom: 25px;
     }
 
     .logo-container img {
-      max-width: 280px;
-      width: 100%;
+      max-width: 200px;
       height: auto;
       display: block;
       filter: drop-shadow(0 8px 20px rgba(0, 0, 0, 0.3));
-      transition: transform 0.3s ease;
     }
 
-    .logo-container:hover img {
-      transform: scale(1.05);
-    }
-
-    .title-section {
-      text-align: center;
-      margin-bottom: 40px;
-      animation: fadeInUp 0.8s ease-out 0.2s both;
-    }
-
-    .title-section h1 {
+    .tagline {
+      font-size: 1.3em;
       color: #FFFEF9;
-      font-size: 2.8em;
-      margin-bottom: 12px;
-      text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.4), 0 0 20px rgba(212, 165, 116, 0.3);
-      letter-spacing: 3px;
       font-weight: 700;
-      background: linear-gradient(135deg, #FFFEF9 0%, #F5E6D3 100%);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+      margin-bottom: 15px;
+      background: linear-gradient(135deg, #F5E6D3 0%, #D4A574 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
     }
 
-    .title-section p {
+    .title {
+      font-size: 2.8em;
+      color: #FFFEF9;
+      margin-bottom: 10px;
+      text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.4);
+      letter-spacing: 2px;
+      font-weight: 700;
+    }
+
+    .subtitle {
+      font-size: 1.1em;
       color: #E8D5C4;
-      font-size: 1.15em;
       font-style: italic;
       text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-      letter-spacing: 0.5px;
     }
 
-    .chatbot-container {
-      width: 100%;
-      max-width: 680px;
-      height: 750px;
+    /* Content Sections */
+    .content-sections {
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+      animation: fadeInUp 0.8s ease-out 0.2s both;
+    }
+
+    .content-section {
+      background: rgba(255, 248, 240, 0.95);
+      padding: 30px;
+      border-radius: 15px;
+      border-left: 5px solid #D4A574;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+      transition: all 0.3s ease;
+    }
+
+    .content-section:hover {
+      transform: translateX(10px);
+      box-shadow: 0 12px 35px rgba(0, 0, 0, 0.25);
+    }
+
+    .content-section h3 {
+      color: #6B4423;
+      font-size: 1.4em;
+      margin-bottom: 12px;
+      letter-spacing: 1px;
+    }
+
+    .content-section p {
+      color: #4a3728;
+      line-height: 1.8;
+      font-size: 0.95em;
+    }
+
+    /* Chatbot Window */
+    .chatbot-window {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 380px;
+      height: 550px;
       background: linear-gradient(135deg, #FFFEF9 0%, #F5EFE7 100%);
-      border-radius: 25px;
-      box-shadow: 
-        0 25px 65px rgba(0, 0, 0, 0.35),
-        inset 0 1px 0 rgba(255, 255, 255, 0.6),
-        0 0 30px rgba(212, 165, 116, 0.2);
+      border-radius: 20px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.6);
       border: 3px solid #D4A574;
       overflow: hidden;
-      animation: slideUp 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) 0.3s both;
-      position: relative;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      animation: slideUpRight 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) 0.4s both;
+      z-index: 100;
+      display: flex;
+      flex-direction: column;
     }
 
-    .chatbot-container:hover {
-      transform: translateY(-5px);
-      box-shadow: 
-        0 30px 75px rgba(0, 0, 0, 0.4),
-        inset 0 1px 0 rgba(255, 255, 255, 0.6),
-        0 0 40px rgba(212, 165, 116, 0.3);
+    .chatbot-header {
+      background: linear-gradient(135deg, #6B4423 0%, #8B5A3C 100%);
+      padding: 15px;
+      color: #F5E6D3;
+      font-weight: 700;
+      font-size: 1em;
+      letter-spacing: 1px;
+      text-align: center;
+      border-bottom: 2px solid #D4A574;
     }
 
-    .chatbot-container::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 3px;
-      background: linear-gradient(90deg, transparent, #D4A574, transparent);
-      opacity: 0.6;
+    .chatbot-content {
+      flex: 1;
+      overflow: hidden;
     }
 
     zapier-interfaces-chatbot-embed {
@@ -187,14 +197,14 @@
       }
     }
 
-    @keyframes slideUp {
+    @keyframes slideUpRight {
       from {
         opacity: 0;
-        transform: translateY(60px);
+        transform: translateX(100px) translateY(100px);
       }
       to {
         opacity: 1;
-        transform: translateY(0);
+        transform: translateX(0) translateY(0);
       }
     }
 
@@ -210,135 +220,192 @@
     }
 
     /* Desktop View */
-    @media (min-width: 769px) {
-      body {
-        padding: 40px 20px;
+    @media (min-width: 1200px) {
+      .wrapper {
+        gap: 40px;
       }
 
-      .logo-container img {
-        max-width: 300px;
+      .main-content {
+        flex: 1;
       }
 
-      .title-section h1 {
-        font-size: 2.8em;
-      }
-
-      .chatbot-container {
-        height: 750px;
+      .chatbot-window {
+        width: 380px;
+        height: 550px;
       }
     }
 
     /* Tablet View */
-    @media (min-width: 481px) and (max-width: 768px) {
+    @media (min-width: 768px) and (max-width: 1199px) {
       body {
-        padding: 30px 15px;
+        padding: 25px 15px;
       }
 
-      .logo-container {
-        margin-bottom: 25px;
-        padding: 20px;
+      .wrapper {
+        flex-direction: column;
+        gap: 30px;
       }
 
-      .logo-container img {
-        max-width: 240px;
-      }
-
-      .title-section h1 {
-        font-size: 2.2em;
-      }
-
-      .title-section p {
-        font-size: 1em;
-      }
-
-      .chatbot-container {
-        max-width: 95%;
-        height: 650px;
-        border-radius: 18px;
-      }
-    }
-
-    /* Mobile View */
-    @media (max-width: 480px) {
-      body {
-        justify-content: flex-start;
-        padding: 15px 10px;
-      }
-
-      .decor-top,
-      .decor-bottom {
-        display: none;
-      }
-
-      .logo-container {
-        margin-bottom: 20px;
-        margin-top: 10px;
-        padding: 15px;
-        border-radius: 12px;
-      }
-
-      .logo-container img {
-        max-width: 180px;
-      }
-
-      .title-section {
-        margin-bottom: 25px;
-      }
-
-      .title-section h1 {
-        font-size: 1.6em;
-        letter-spacing: 1px;
-      }
-
-      .title-section p {
-        font-size: 0.9em;
-      }
-
-      .chatbot-container {
+      .chatbot-window {
+        position: relative;
         width: 100%;
-        max-width: 100%;
-        height: calc(100vh - 280px);
-        min-height: 450px;
-        border-radius: 12px;
-        border: 2px solid #D4A574;
+        height: 500px;
+        bottom: auto;
+        right: auto;
       }
-    }
 
-    /* Extra small phones */
-    @media (max-width: 360px) {
+      .logo-container {
+        padding: 15px;
+      }
+
       .logo-container img {
         max-width: 150px;
       }
 
-      .title-section h1 {
-        font-size: 1.3em;
+      .title {
+        font-size: 2.2em;
       }
 
-      .chatbot-container {
-        height: calc(100vh - 250px);
-        min-height: 350px;
+      .content-section {
+        padding: 25px;
+      }
+
+      .content-section h3 {
+        font-size: 1.2em;
+      }
+    }
+
+    /* Mobile View */
+    @media (max-width: 767px) {
+      body {
+        padding: 15px 10px;
+      }
+
+      .wrapper {
+        flex-direction: column;
+        gap: 25px;
+      }
+
+      .main-content {
+        flex: 1;
+        width: 100%;
+      }
+
+      .logo-container {
+        padding: 12px;
+        margin-bottom: 20px;
+      }
+
+      .logo-container img {
+        max-width: 140px;
+      }
+
+      .tagline {
+        font-size: 0.95em;
+        letter-spacing: 1px;
+      }
+
+      .title {
+        font-size: 1.8em;
+        letter-spacing: 1px;
+      }
+
+      .subtitle {
+        font-size: 0.95em;
+      }
+
+      .content-section {
+        padding: 20px;
+        border-left-width: 4px;
+      }
+
+      .content-section h3 {
+        font-size: 1.1em;
+      }
+
+      .content-section p {
+        font-size: 0.9em;
+      }
+
+      .chatbot-window {
+        position: relative;
+        width: 100%;
+        height: 450px;
+        bottom: auto;
+        right: auto;
+        border-radius: 15px;
+      }
+
+      .chatbot-header {
+        padding: 12px;
+        font-size: 0.95em;
+      }
+    }
+
+    /* Extra small phones */
+    @media (max-width: 480px) {
+      .title {
+        font-size: 1.5em;
+      }
+
+      .chatbot-window {
+        height: 400px;
       }
     }
   </style>
 </head>
 <body>
-  <div class="decor-top"></div>
-  <div class="decor-bottom"></div>
-
   <div class="wrapper">
-    <div class="logo-container">
-      <img src="Logo.png" alt="TrueVedika Logo" />
+    <!-- Main Content -->
+    <div class="main-content">
+      <!-- Header -->
+      <div class="header-section">
+        <div class="logo-container">
+          <img src="Logo.png" alt="TrueVedika Logo" />
+        </div>
+        <div class="tagline">🌿 Back to Roots 🌿</div>
+        <h1 class="title">TrueVedika</h1>
+        <p class="subtitle">Reconnect with Vedic Wisdom, Restore Your Balance</p>
+      </div>
+
+      <!-- Content Sections -->
+      <div class="content-sections">
+        <!-- About Section -->
+        <div class="content-section">
+          <h3>✨ What is TrueVedika?</h3>
+          <p>
+            TrueVedika is a life-restoring wellness initiative inspired by timeless Vedic wisdom and grounded in modern living. It is a space where ancient knowledge meets today's lifestyles, helping individuals reconnect with natural rhythms, mindful nutrition, and sustainable daily habits. TrueVedika focuses on building awareness, balance, and inner alignment—nurturing the body, mind, and spirit through simple, rooted practices that feel relevant in the modern world.
+          </p>
+        </div>
+
+        <!-- Initiatives Section -->
+        <div class="content-section">
+          <h3>🌱 Our Initiatives</h3>
+          <p>
+            TrueVedika Initiatives focus on restoring balance through Vedic-inspired wellness, mindful living, and habit-building practices designed for modern lifestyles. These initiatives include guided reflections, daily rituals, nutrition awareness, and simple challenges that help individuals reconnect with themselves and nature.
+          </p>
+        </div>
+
+        <!-- Community Section -->
+        <div class="content-section">
+          <h3>🤝 Community Circle</h3>
+          <p>
+            The TrueVedika Community Circle is a safe, supportive space where members come together to share experiences, grow consciously, and build consistency through collective intent. It encourages reflection over pressure, progress over perfection, and connection over isolation—fostering a sense of belonging while nurturing body, mind, and spirit.
+          </p>
+        </div>
+      </div>
     </div>
 
-    <div class="title-section">
-      <h1>TrueVedika</h1>
-      <p>Discover the wisdom of the Vedas</p>
-    </div>
-
-    <div class="chatbot-container">
-      <!-- Zapier Chatbot Embed -->
-      <script async type='module' src='https://interfaces.zapier.com/assets/web-components/zapier-interfaces/zapier-interfaces.esm.js'></script>
-      <zapier-interfaces-chatbot-embed chatbot-id='cmkjan2pd001614i7sw8jiq1z'></zapier-interfaces-chatbot-embed>
+    <!-- Chatbot Window (Fixed on right side) -->
+    <div class="chatbot-window">
+      <div class="chatbot-header">
+        💬 Ask TrueVedika
+      </div>
+      <div class="chatbot-content">
+        <!-- Zapier Chatbot Embed -->
+        <script async type='module' src='https://interfaces.zapier.com/assets/web-components/zapier-interfaces/zapier-interfaces.esm.js'></script>
+        <zapier-interfaces-chatbot-embed chatbot-id='cmkjan2pd001614i7sw8jiq1z'></zapier-interfaces-chatbot-embed>
+      </div>
     </div>
   </div>
 </body>
