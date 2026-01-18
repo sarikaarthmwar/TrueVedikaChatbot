@@ -4,17 +4,73 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>TrueVedika Chatbot</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .container {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+      width: 100%;
+      max-width: 700px;
+      overflow: hidden;
+    }
+
+    .header {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 30px;
+      text-align: center;
+    }
+
+    .header h1 {
+      font-size: 2em;
+      margin-bottom: 10px;
+    }
+
+    .header p {
+      font-size: 1em;
+      opacity: 0.9;
+    }
+
+    .chatbot-wrapper {
+      padding: 20px;
+      min-height: 600px;
+    }
+
+    zapier-interfaces-chatbot-embed {
+      --height: 500px;
+    }
+  </style>
 </head>
 <body>
-  <h1>Welcome to TrueVedika</h1>
-  <p>Ask our chatbot anything about TrueVedika initiatives!</p>
+  <div class="container">
+    <div class="header">
+      <h1>TrueVedika Chatbot</h1>
+      <p>Ask anything about TrueVedika initiatives</p>
+    </div>
 
-  <!-- Zapier Chatbot Embed -->
-  <script async type="module" src="https://interfaces.zapier.com/assets/web-components/zapier-interfaces/zapier-interfaces.esm.js"></script>
-  <zapier-interfaces-chatbot-embed 
-      is-popup="true" 
-      chatbot-id="cmkjan2pd001614i7sw8jiq1z">
-  </zapier-interfaces-chatbot-embed>
-
+    <div class="chatbot-wrapper">
+      <!-- Zapier Chatbot Embed -->
+      <script async type="module" src="https://interfaces.zapier.com/assets/web-components/zapier-interfaces/zapier-interfaces.esm.js"></script>
+      <zapier-interfaces-chatbot-embed 
+          chatbot-id="cmkjan2pd001614i7sw8jiq1z">
+      </zapier-interfaces-chatbot-embed>
+    </div>
+  </div>
 </body>
 </html>
