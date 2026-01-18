@@ -12,62 +12,216 @@
     }
 
     body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      font-family: 'Segoe UI', 'Georgia', serif;
+      background: linear-gradient(135deg, #8B7355 0%, #A0826D 25%, #9B9B7A 50%, #8B9B7A 75%, #8B7355 100%);
       min-height: 100vh;
       display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 20px;
-    }
-
-    .container {
-      background: white;
-      border-radius: 12px;
-      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-      width: 100%;
-      max-width: 700px;
+      flex-direction: column;
       overflow: hidden;
     }
 
-    .header {
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      color: white;
-      padding: 30px;
+    .navbar {
+      background: linear-gradient(135deg, #6B4423 0%, #8B5A3C 100%);
+      padding: 20px 40px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      border-bottom: 3px solid #D4A574;
+    }
+
+    .navbar h1 {
+      color: #F5E6D3;
+      font-size: 1.8em;
+      letter-spacing: 1px;
+      font-weight: 600;
+    }
+
+    .container {
+      display: flex;
+      flex: 1;
+      height: calc(100vh - 80px);
+      gap: 0;
+    }
+
+    .sidebar {
+      background: linear-gradient(180deg, #9B8B6B 0%, #8B7A5B 100%);
+      width: 350px;
+      padding: 40px;
+      overflow-y: auto;
+      border-right: 3px solid #D4A574;
+      box-shadow: 2px 0 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .sidebar h2 {
+      color: #F5E6D3;
+      font-size: 1.4em;
+      margin-bottom: 20px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .sidebar p {
+      color: #E8D5C4;
+      line-height: 1.8;
+      margin-bottom: 25px;
+      font-size: 0.95em;
+    }
+
+    .features {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .feature-item {
+      background: rgba(139, 90, 60, 0.5);
+      padding: 15px;
+      border-radius: 8px;
+      border-left: 4px solid #D4A574;
+      color: #F5E6D3;
+      font-size: 0.9em;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .feature-item:hover {
+      background: rgba(212, 165, 116, 0.3);
+      transform: translateX(5px);
+    }
+
+    .feature-item strong {
+      color: #F5E6D3;
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    .main-content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      padding: 40px;
+      overflow: hidden;
+    }
+
+    .header-section {
       text-align: center;
+      margin-bottom: 30px;
     }
 
-    .header h1 {
-      font-size: 2em;
+    .header-section h3 {
+      color: #F5E6D3;
+      font-size: 1.6em;
       margin-bottom: 10px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
     }
 
-    .header p {
-      font-size: 1em;
-      opacity: 0.9;
+    .header-section p {
+      color: #E8D5C4;
+      font-size: 1.05em;
+      font-style: italic;
     }
 
     .chatbot-wrapper {
-      padding: 20px;
-      min-height: 600px;
+      flex: 1;
+      background: linear-gradient(180deg, rgba(255, 248, 240, 0.95) 0%, rgba(240, 230, 220, 0.95) 100%);
+      border-radius: 12px;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+      overflow: hidden;
+      border: 3px solid #D4A574;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 500px;
     }
 
-    zapier-interfaces-chatbot-embed {
-      --height: 500px;
+    /* Scrollbar styling */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: rgba(107, 68, 35, 0.2);
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: #D4A574;
+      border-radius: 4px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: #B8985F;
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        flex-direction: column;
+        height: auto;
+      }
+
+      .sidebar {
+        width: 100%;
+        border-right: none;
+        border-bottom: 3px solid #D4A574;
+        padding: 30px;
+      }
+
+      .main-content {
+        padding: 30px 20px;
+      }
+
+      .navbar h1 {
+        font-size: 1.4em;
+      }
     }
   </style>
 </head>
 <body>
+  <div class="navbar">
+    <h1>🕉️ TrueVedika Chatbot</h1>
+  </div>
+
   <div class="container">
-    <div class="header">
-      <h1>TrueVedika Chatbot</h1>
-      <p>Ask anything about TrueVedika initiatives</p>
+    <div class="sidebar">
+      <h2>About TrueVedika</h2>
+      <p>Welcome to the authentic source of Vedic wisdom. Our chatbot is here to guide you through the profound teachings of ancient Vedic sciences and their modern applications.</p>
+      
+      <h2 style="margin-top: 30px;">What You Can Ask</h2>
+      <div class="features">
+        <div class="feature-item">
+          <strong>📚 Vedic Knowledge</strong>
+          Learn about the four Vedas and Upanishads
+        </div>
+        <div class="feature-item">
+          <strong>🧘 Yoga & Wellness</strong>
+          Guidance on yogic practices and holistic health
+        </div>
+        <div class="feature-item">
+          <strong>✨ Philosophy</strong>
+          Deep insights into Vedic philosophy
+        </div>
+        <div class="feature-item">
+          <strong>🌿 Ayurveda</strong>
+          Traditional healing and wellness wisdom
+        </div>
+        <div class="feature-item">
+          <strong>🪷 Rituals & Practices</strong>
+          Sacred practices and their significance
+        </div>
+      </div>
     </div>
 
-    <div class="chatbot-wrapper">
-      <!-- Zapier Chatbot Embed -->
-      <script async type='module' src='https://interfaces.zapier.com/assets/web-components/zapier-interfaces/zapier-interfaces.esm.js'></script>
-      <zapier-interfaces-chatbot-embed is-popup='true' chatbot-id='cmkjan2pd001614i7sw8jiq1z'></zapier-interfaces-chatbot-embed>
+    <div class="main-content">
+      <div class="header-section">
+        <h3>Ask Our Chatbot</h3>
+        <p>Discover the timeless wisdom of the Vedas</p>
+      </div>
+
+      <div class="chatbot-wrapper">
+        <!-- Zapier Chatbot Embed -->
+        <script async type='module' src='https://interfaces.zapier.com/assets/web-components/zapier-interfaces/zapier-interfaces.esm.js'></script>
+        <zapier-interfaces-chatbot-embed is-popup='true' chatbot-id='cmkjan2pd001614i7sw8jiq1z'></zapier-interfaces-chatbot-embed>
+      </div>
     </div>
   </div>
 </body>
